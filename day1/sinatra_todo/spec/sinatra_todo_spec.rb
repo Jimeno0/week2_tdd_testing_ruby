@@ -56,7 +56,8 @@ end
 
 describe TodoList do
   before(:all) do
-    @todo_list = TodoList.new
+    @user = "Carlos"
+    @todo_list = TodoList.new(@user)
     @dog_task = Task.new("walk the dog")
     @cat_task = Task.new("walk the cat")
     @dishes_task = Task.new("wash your dishes")
@@ -67,8 +68,11 @@ describe TodoList do
 
   describe '.initialize' do
     it 'with an empty array' do
-      expect(TodoList.new.tasks).to eq([])
-    end    
+      expect(TodoList.new("Carlos").tasks).to eq([])
+    end  
+    it 'propertie user is the inialize param' do
+      expect(@todo_list.user).to eq(@user)
+      end  
   end
 
   describe '.add_task' do
@@ -98,7 +102,7 @@ describe TodoList do
 
   describe '.sort_by_created' do
     before(:all) do
-      @todo_list_to_order = TodoList.new
+      @todo_list_to_order = TodoList.new("Charlie")
       @todo_list_to_order.add_task(@dog_task)
       @todo_list_to_order.add_task(@cat_task)
       @todo_list_to_order.add_task(@dishes_task)
@@ -113,15 +117,7 @@ describe TodoList do
       @todo_list_to_order.sort_by_created("DESC")
       expect(@first_created).to eq( @todo_list_to_order.tasks[0]) 
     end
-    # it 'order tasks by date no params' do
-    #   @todo_list.sort_by_created('DESC')
-    #   expect(@todo_list.tasks).to eq([]) 
-    # end
-
   end
-
-
-  
 end
 
 

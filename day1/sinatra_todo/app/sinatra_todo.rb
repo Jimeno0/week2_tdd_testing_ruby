@@ -35,9 +35,10 @@ end
 
 
 class TodoList
-  attr_reader :tasks
-  def initialize
+  attr_reader :tasks, :user
+  def initialize(user)
     @tasks = []
+    @user = user
   end
 
   def add_task (task)
