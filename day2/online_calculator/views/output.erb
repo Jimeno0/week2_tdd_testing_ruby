@@ -1,0 +1,6 @@
+<span><%="#{@first} and #{@second} = #{@result}" %></span>
+<a href="/">Back to mail</a>
+<br>
+<form action="/store" method="POST">
+  <button type="submit" name="result" value=<%=@result %>>Guardar resultado</button>
+</form>

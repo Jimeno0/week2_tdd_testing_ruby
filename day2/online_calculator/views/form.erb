@@ -1,0 +1,9 @@
+<h1><%=@math %></h1>
+
+<form action="/result" method="POST">
+  <input type="number" name="first_number" placeholder="1st number" value=<%=@stored %>>
+  <%=@symbol %>
+  <input type="number" name="second_number" placeholder="2nd number">
+  <input type="hidden" name="symbol" value=<%=@symbol %> hide>
+  <button type="submit" name="maths" value=<%=@math %> >Calculate</button>
+</form>
