@@ -1,0 +1,15 @@
+<h1>main page</h1>
+<ul>
+  <% @@todo_list.tasks.each do |task| %>
+  
+    <li>
+      <%=task.name %>
+      <% if task.complete?%>
+        Completed!
+      <% end %>
+      <a href=<%="/complete/"+task.id.to_s %>>completed</a>
+      <a href=<%="/delete/"+task.id.to_s %>>delete</a>
+    </li>
+  <% end %>
+</ul>
+<a href="/new_task">new task</a>

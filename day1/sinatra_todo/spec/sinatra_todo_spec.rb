@@ -1,4 +1,5 @@
-require_relative "../app/sinatra_todo.rb"
+require_relative "../app/todo.rb"
+require_relative "../app/task.rb"
 
 describe Task do
 
@@ -23,10 +24,9 @@ describe Task do
   end
 
   describe '.complete!' do
-    it 'change the instance status to true' do
-      expect(@task1.complete!).to be true
-    end
+
     it 'when complete! complete? = true' do
+      @task1.complete!
       expect(@task1.complete?).to be true
     end
   end
@@ -42,7 +42,7 @@ describe Task do
 
   describe '.updated_at' do
     it 'on initialize update_at should be nil' do
-      expect(@task1.updated_at).to be_falsy
+      expect(@task1.updated_at).to be_nil
     end
   end
 
@@ -68,11 +68,11 @@ describe TodoList do
 
   describe '.initialize' do
     it 'with an empty array' do
-      expect(TodoList.new("Carlos").tasks).to eq([])
+      expect(TodoList.new("Carlos").tasks).to be_empty
     end  
     it 'propertie user is the inialize param' do
       expect(@todo_list.user).to eq(@user)
-      end  
+    end  
   end
 
   describe '.add_task' do
@@ -119,21 +119,3 @@ describe TodoList do
     end
   end
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
